@@ -21,8 +21,8 @@
 ## Features
 
 - **AI-Powered Captioning**: Automatically generates descriptive captions using advanced AI models.
+- **Interactive Interface**: Built with Gradio for a user-friendly experience.
 - **Customizable Output**: Tailor captions to fit your style or tone (e.g., formal, casual, humorous).
-- **Batch Processing**: Process multiple images at once for efficient captioning.
 - **Cross-Platform Support**: Works seamlessly on Windows, macOS, and Linux.
 - **Open Source**: Fully customizable and extensible for developers.
 
@@ -45,26 +45,31 @@
 
 2. Install the required dependencies:
    ```bash
-   pip install langchain gradio transformers bs4 requests torch
+   pip install gradio transformers torch
+   ```
+
+3. (Optional) Set up an API key if your project uses external AI services like OpenAI, Google Vision, etc. Add the key to a `.env` file:
+   ```bash
+   echo "API_KEY=your_api_key_here" > .env
    ```
 
 ---
 
 ## Usage
 
-Run the script to generate captions for your photos:
+Run the script to launch the Gradio web app:
 
 ```bash
-python image_cap.py --input path/to/your/images --output path/to/save/captions
+python image_captioning_app.py
 ```
 
-### Command-Line Arguments
+This will start a local web server where you can upload images and view captions in real-time. Open your browser and navigate to `http://localhost:7860` to access the app.
 
-| Argument       | Description                                   | Default Value |
-|----------------|-----------------------------------------------|---------------|
-| `--input`      | Path to the folder containing your images     | Required      |
-| `--output`     | Path to save the generated captions           | `./captions`  |
-| `--style`      | Caption style (e.g., formal, casual, funny)   | `neutral`     |
+### How It Works
+
+1. Upload an image using the Gradio interface.
+2. The app processes the image using the BLIP model (`Salesforce/blip-image-captioning-base`) to generate a caption.
+3. View the generated caption displayed below the input image.
 
 ---
 
@@ -94,7 +99,7 @@ Please ensure your code follows the project's coding standards and includes appr
 
 ## License
 
-This project is licensed under the **MIT License**. See the [./LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 
 ---
 
@@ -115,5 +120,3 @@ If you have any questions, suggestions, or feedback, feel free to reach out:
 - Built using [Transformers](https://huggingface.co/transformers/), [Gradio](https://gradio.app/), and other open-source libraries.
 
 ---
-
-Let me know if you'd like to make any additional tweaks or need further assistance!
